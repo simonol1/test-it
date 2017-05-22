@@ -23,7 +23,6 @@ export default class App extends React.Component {
   }
 
   renderWidgets (err, widgets) {
-    console.log(err, widgets)
     this.setState({
       error: err,
       widgets: widgets || []
@@ -50,11 +49,11 @@ export default class App extends React.Component {
         <ErrorMessage error={this.state.error} />
         <h1>Widgets FTW!</h1>
         <WidgetList
-          showDetails={() => this.showDetails()}
+          showDetails={(widget) => this.showDetails(widget)}
           widgets={this.state.widgets} />
         <p><a href='#' onClick={(e) => this.showAddWidget(e)}>Add widget</a></p>
         {this.state.addWidgetVisible && <AddWidget
-          finishAdd={() => this.refreshList()} />}
+          finishAdd={(err) => this.refreshList(err)} />}
         {this.state.detailsVisible && <WidgetDetails
           isVisible={this.state.detailsVisible}
           hideDetails={() => this.hideDetails()}

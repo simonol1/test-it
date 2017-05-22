@@ -27,7 +27,7 @@ function appendWidget (widget, callback) {
       if (err) {
         callback(err)
       } else {
-        callback()
+        callback(null)
       }
     })
 }
