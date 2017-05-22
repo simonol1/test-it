@@ -19,7 +19,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount () {
-    api.getWidgets(this.renderWidgets.bind(this))
+    api.getWidgets((err, widgets) => this.renderWidgets(err, widgets))
   }
 
   renderWidgets (err, widgets) {
