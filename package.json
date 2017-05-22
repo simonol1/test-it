@@ -37,6 +37,7 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4",
+    "sinon": "^2.3.0",
     "supertest": "^3.0.0",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.14.1"

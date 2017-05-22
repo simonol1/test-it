@@ -1,6 +1,6 @@
 import React from 'react'
 
-import api from '../api'
+import * as api from '../api'
 import AddWidget from './AddWidget'
 import WidgetList from './WidgetList'
 import WidgetDetails from './WidgetDetails'
