@@ -18,7 +18,6 @@ export default class AddWidget extends React.Component {
       ...this.state,
       [e.target.name]: e.target.value
     })
-    console.log(this.state)
   }
 
   addWidget (e) {
