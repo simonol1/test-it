@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default ({widget, showDetails}) => {
+export default ({language, showDetails}) => {
   return (
-    <div className="widget-list-item">
-      {`${widget.name} `}
-      <a href="#" onClick={() => showDetails(widget)}>details</a>
+    <div className="language-list-item">
+      {`${language.name} `}
+      <a href="#" onClick={() => showDetails(language)}>details</a>
     </div>
   )
 }

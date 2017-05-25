@@ -1,16 +1,16 @@
 import React from 'react'
 
 export default (props) => {
-  const {widget, isVisible} = props
+  const {language, isVisible} = props
   const hide = () => props.hideDetails()
-  const classes = "widget-details " + isVisble ? 'visible' : 'hidden'
+  const classes = "language-details " + isVisble ? 'visible' : 'hidden'
   return (
     <div className={classes}>
       <h2>Details</h2>
-      <p>Name: {widget.name}</p>
-      <p>Price: {widget.price}</p>
-      <p>Mfg: {widget.mfg}</p>
-      <p>In stock: {widget.inStock}</p>
+      <p>Name: {language.name}</p>
+      <p>Price: {language.price}</p>
+      <p>Mfg: {language.mfg}</p>
+      <p>In stock: {language.inStock}</p>
       <a href="#" onClick={hide}>Close</a>
     </div>
   )

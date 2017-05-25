@@ -1,14 +1,14 @@
 import React from 'react'
-import WidgetListItem from './WidgetListItem'
+import LanguageListItem from './LanguageListItem'
 
 export default (props) => {
   return (
-    <div className="widget-list">
+    <div className="language-list">
     <h2>List</h2>
-    {props.widgets.map((widget) => {
-      return <WidgetListItem 
-        key={widget.id}
-        widget={widget}
+    {props.languages.map((language) => {
+      return <LanguageListItem
+        key={language.id}
+        language={language}
         hideDetails={props.hideDetails}
         showDetails={props.showDetails} />
     })}

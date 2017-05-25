@@ -2,7 +2,7 @@ import React from 'react'
 
 import api from '../api'
 
-export default class AddWidget extends React.Component {
+export default class AddLanguage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -20,15 +20,15 @@ export default class AddWidget extends React.Component {
     })
   }
 
-  addWidget (e) {
+  addLanguage (e) {
     e.preventDefault()
-    const widget = this.state
-    api.appendWidget(widget, this.props.finishAdd)
+    const language = this.state
+    api.appendLanguage(language, this.props.finishAdd)
   }
 
   render () {
     return (
-      <div className="add-widget">
+      <div className="add-language">
         <form>
           <p><input placeholder="Name" name='name'
             onChange={e => this.fieldChanged(e)}
@@ -46,7 +46,7 @@ export default class AddWidget extends React.Component {
             onChange={e => this.fieldChanged(e)}
             value={this.state.inStock}
             /></p>
-          <button onClick={e => this.addWidget(e)}>Add widget</button> {' '}
+          <button onClick={e => this.addLanguage(e)}>Add language</button> {' '}
           <a href="#" onClick={this.props.finishAdd}>Cancel</a>
         </form>
       </div>
