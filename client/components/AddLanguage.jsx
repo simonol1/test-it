@@ -6,10 +6,8 @@ export default class AddLanguage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: '',
-      price: '',
-      mfg: '',
-      inStock: ''
+      language_name: '',
+      tests: ''
     }
   }
 
@@ -30,21 +28,13 @@ export default class AddLanguage extends React.Component {
     return (
       <div className="add-language">
         <form>
-          <p><input placeholder="Name" name='name'
+          <p><input placeholder="Enter language name" name='language_name'
             onChange={e => this.fieldChanged(e)}
-            value={this.state.name}
+            value={this.state.language_name}
             /></p>
-          <p><input placeholder="Price" name='price'
+          <p><input placeholder="Enter tests" name='tests'
             onChange={e => this.fieldChanged(e)}
-            value={this.state.price}
-            /></p>
-          <p><input placeholder="Manufacturer" name='mfg'
-            onChange={e => this.fieldChanged(e)}
-            value={this.state.mfg}
-            /></p>
-          <p><input placeholder="In stock" name='inStock'
-            onChange={e => this.fieldChanged(e)}
-            value={this.state.inStock}
+            value={this.state.tests}
             /></p>
           <button onClick={e => this.addLanguage(e)}>Add language</button> {' '}
           <a href="#" onClick={this.props.finishAdd}>Cancel</a>

@@ -6,11 +6,9 @@ export default (props) => {
   const classes = "language-details " + isVisble ? 'visible' : 'hidden'
   return (
     <div className={classes}>
-      <h2>Details</h2>
-      <p>Name: {language.name}</p>
-      <p>Price: {language.price}</p>
-      <p>Mfg: {language.mfg}</p>
-      <p>In stock: {language.inStock}</p>
+      <h2>Tests</h2>
+      <p>Language Name: {language.language_name}</p>
+      <p>Tests: {language.tests}</p>
       <a href="#" onClick={hide}>Close</a>
     </div>
   )

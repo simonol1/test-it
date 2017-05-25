@@ -4,7 +4,7 @@ import LanguageListItem from './LanguageListItem'
 export default (props) => {
   return (
     <div className="language-list">
-    <h2>List</h2>
+    <h2>Language List</h2>
     {props.languages.map((language) => {
       return <LanguageListItem
         key={language.id}

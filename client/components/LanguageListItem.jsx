@@ -4,7 +4,7 @@ export default ({language, showDetails}) => {
   return (
     <div className="language-list-item">
       {`${language.name} `}
-      <a href="#" onClick={() => showDetails(language)}>details</a>
+      <a href="#" onClick={() => showDetails(language)}>tests</a>
     </div>
   )
 }
