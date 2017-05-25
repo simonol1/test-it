@@ -1,8 +1,7 @@
-.widget-details .visible {
+.test-details .visible {
   display: block;
 }
 
-.widget-details .hidden {
+.test-details .hidden {
   display: none;
 }
-

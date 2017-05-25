@@ -4,11 +4,11 @@ var router = express.Router()
 var db = require('../db')
 
 router.get('/', function (req, res) {
-  res.json(db.getWidgets())
+  res.json(db.getTestLib())
 })
 
 router.post('/', function (req, res) {
-  db.saveWidget(req.body)
+  db.saveTestLib(req.body)
   res.sendStatus(200)
 })
 

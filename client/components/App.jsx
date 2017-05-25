@@ -1,9 +1,9 @@
 import React from 'react'
 
 import * as api from '../api'
-import AddWidget from './AddWidget'
-import WidgetList from './WidgetList'
-import WidgetDetails from './WidgetDetails'
+import AddTest from './AddTest'
+import TestList from './TestList'
+import TestDetails from './TestDetails'
 import ErrorMessage from './ErrorMessage'
 
 export default class App extends React.Component {
@@ -11,35 +11,35 @@ export default class App extends React.Component {
     super(props)
     this.state = {
       error: null,
-      widgets: [],
-      activeWidget: null,
+      tests: [],
+      activeTest: null,
       detailsVisible: false,
-      addWidgetVisible: false
+      addTestVisible: false
     }
   }
 
   componentDidMount () {
-    api.getWidgets((err, widgets) => this.renderWidgets(err, widgets))
+    api.getTestLib((err, tests) => this.renderTests(err, tests))
   }
 
-  renderWidgets (err, widgets) {
+  renderTests (err, tests) {
     this.setState({
       error: err,
-      widgets: widgets || []
+      tests: tests || []
     })
   }
 
   refreshList (err) {
     this.setState({
       error: err,
-      addWidgetVisible: false
+      addTestVisible: false
     })
-    api.getWidgets(this.renderWidgets.bind(this))
+    api.getTests(this.renderTests.bind(this))
   }
 
-  showAddWidget () {
+  showAddTest () {
     this.setState({
-      addWidgetVisible: true
+      addTestVisible: true
     })
   }
 
@@ -47,24 +47,24 @@ export default class App extends React.Component {
     return (
       <div>
         <ErrorMessage error={this.state.error} />
-        <h1>Widgets FTW!</h1>
-        <WidgetList
-          showDetails={(widget) => this.showDetails(widget)}
-          widgets={this.state.widgets} />
-        <p><a href='#' onClick={(e) => this.showAddWidget(e)}>Add widget</a></p>
-        {this.state.addWidgetVisible && <AddWidget
+        <h1>Test-it</h1>
+        <TestList
+          showDetails={(test) => this.showDetails(test)}
+          tests={this.state.tests} />
+        <p><a href='#' onClick={(e) => this.showAddTest(e)}>Add test</a></p>
+        {this.state.addTestVisible && <AddTest
           finishAdd={(err) => this.refreshList(err)} />}
-        {this.state.detailsVisible && <WidgetDetails
+        {this.state.detailsVisible && <TestDetails
           isVisible={this.state.detailsVisible}
           hideDetails={() => this.hideDetails()}
-          widget={this.state.activeWidget} />}
+          test={this.state.activeTest} />}
       </div>
     )
   }
 
-  showDetails (widget) {
+  showDetails (test) {
     this.setState({
-      activeWidget: widget,
+      activeTest: test,
       detailsVisible: true
     })
   }
