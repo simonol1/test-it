@@ -4,12 +4,12 @@ var router = express.Router()
 var db = require('../db')
 
 router.get('/', function (req, res) {
-  res.json(db.getWidgets())
+  res.json(db.getLanguages())
 })
 
-router.post('/', function (req, res) {
-  db.saveWidget(req.body)
-  res.sendStatus(200)
-})
+// router.post('/', function (req, res) {
+//   db.(req.body)
+//   res.sendStatus(200)
+// })
 
 module.exports = router
