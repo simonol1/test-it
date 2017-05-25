@@ -1,8 +1,7 @@
-.widget-details .visible {
+.language-details .visible {
   display: block;
 }
 
-.widget-details .hidden {
+.language-details .hidden {
   display: none;
 }
-

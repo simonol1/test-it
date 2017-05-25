@@ -1,9 +1,9 @@
 import React from 'react'
 
 import * as api from '../api'
-import AddWidget from './AddWidget'
-import WidgetList from './WidgetList'
-import WidgetDetails from './WidgetDetails'
+import AddLanguage from './AddLanguage'
+import LanguageList from './LanguageList'
+import LanguageDetails from './LanguageDetails'
 import ErrorMessage from './ErrorMessage'
 
 export default class App extends React.Component {
@@ -11,35 +11,35 @@ export default class App extends React.Component {
     super(props)
     this.state = {
       error: null,
-      widgets: [],
-      activeWidget: null,
+      languages: [],
+      activeLanguage: null,
       detailsVisible: false,
-      addWidgetVisible: false
+      addLanguageVisible: false
     }
   }
 
   componentDidMount () {
-    api.getWidgets((err, widgets) => this.renderWidgets(err, widgets))
+    api.getLanguages((err, languages) => this.renderLanguages(err, languages))
   }
 
-  renderWidgets (err, widgets) {
+  renderLanguages (err, languages) {
     this.setState({
       error: err,
-      widgets: widgets || []
+      languages: languages || []
     })
   }
 
   refreshList (err) {
     this.setState({
       error: err,
-      addWidgetVisible: false
+      addLanguageVisible: false
     })
-    api.getWidgets(this.renderWidgets.bind(this))
+    api.getLanguages(this.renderLanguages.bind(this))
   }
 
-  showAddWidget () {
+  showAddLanguage () {
     this.setState({
-      addWidgetVisible: true
+      addLanguageVisible: true
     })
   }
 
@@ -47,24 +47,24 @@ export default class App extends React.Component {
     return (
       <div>
         <ErrorMessage error={this.state.error} />
-        <h1>Widgets FTW!</h1>
-        <WidgetList
-          showDetails={(widget) => this.showDetails(widget)}
-          widgets={this.state.widgets} />
-        <p><a href='#' onClick={(e) => this.showAddWidget(e)}>Add widget</a></p>
-        {this.state.addWidgetVisible && <AddWidget
+        <h1>Languages!</h1>
+        <LanguageList
+          showDetails={(language) => this.showDetails(language)}
+          languages={this.state.languages} />
+        <p><a href='#' onClick={(e) => this.showAddLanguage(e)}>Add language</a></p>
+        {this.state.addLanguageVisible && <AddLanguage
           finishAdd={(err) => this.refreshList(err)} />}
-        {this.state.detailsVisible && <WidgetDetails
+        {this.state.detailsVisible && <LanguageDetails
           isVisible={this.state.detailsVisible}
           hideDetails={() => this.hideDetails()}
-          widget={this.state.activeWidget} />}
+          language={this.state.activeLanguage} />}
       </div>
     )
   }
 
-  showDetails (widget) {
+  showDetails (language) {
     this.setState({
-      activeWidget: widget,
+      activeLanguage: language,
       detailsVisible: true
     })
   }
