@@ -1,12 +1,12 @@
 module.exports = {
-  getTests: getTests,
-  getLanguages
+  getTestLib: getTestLib,
+  getTechnologies
 }
 
-function getTests (connection) {
-  return connection('tests')
+function getTestLib (connection) {
+  return connection('testLib')
 }
 
-function getLanguages (connection) {
-  return connection('languages')
+function getTechnologies (connection) {
+  return connection('technologies')
 }

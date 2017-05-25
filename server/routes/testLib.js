@@ -4,12 +4,11 @@ var router = express.Router()
 var db = require('../db')
 
 router.get('/', function (req, res) {
-  res.json(db.getLanguages())
+  db.getTestLib(req.app.get('knex'))
+    .then((result) => {
+      res.json(result)
+   })
 })
 
-// router.post('/', function (req, res) {
-//   db.(req.body)
-//   res.sendStatus(200)
-// })
 
 module.exports = router

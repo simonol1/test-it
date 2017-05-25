@@ -1,5 +1,5 @@
 exports.up = function (knex, Promise) {
-  return knex.schema.createTable('tests', function (table) {
+  return knex.schema.createTable('testLib', function (table) {
     table.increments('id').primary()
     table.string('test_name')
     table.string('img_url')
@@ -9,5 +9,5 @@ exports.up = function (knex, Promise) {
 }
 
 exports.down = function (knex, Promise) {
-  return knex.schema.dropTable('tests')
+  return knex.schema.dropTable('testLib')
 }
