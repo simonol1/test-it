@@ -9,9 +9,9 @@ export default (props) => {
     <div className={classes}>
       <h2>Details</h2>
       <p>Name: {test.test_name}</p>
-      <p>Installation: {test.installation}</p>
+      <p>Installation: <a href={test.installation}>{test.installation}</a></p>
       <p>Description: {test.description}</p>
-      <div><img src={test.img_url} /></div>
+      <div><img className = 'image' src={test.img_url} /></div>
       <a href="#" onClick={hide}>Close</a>
     </div>
   )

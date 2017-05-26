@@ -21926,7 +21926,6 @@
 	        error: err,
 	        tests: tests || []
 	      });
-	      console.log(this.state);
 	    }
 	  }, {
 	    key: 'renderTechnologies',
@@ -21935,7 +21934,6 @@
 	        error: err,
 	        technologies: technologies || []
 	      });
-	      console.log(this.state);
 	    }
 	  }, {
 	    key: 'refreshList',
@@ -21974,7 +21972,6 @@
 	  }, {
 	    key: 'showTechnologyDetails',
 	    value: function showTechnologyDetails(technology) {
-	      console.log(technology);
 	      this.setState({
 	        activeTechnology: technology,
 	        technologyDetailsVisible: true
@@ -21994,78 +21991,87 @@
 	
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'app' },
+	        { className: 'app container' },
 	        _react2.default.createElement(
 	          'div',
-	          null,
-	          _react2.default.createElement(_ErrorMessage2.default, { error: this.state.error }),
+	          { className: 'header' },
 	          _react2.default.createElement(
 	            'h1',
 	            null,
-	            'Test-it'
+	            'TEST IT!'
 	          ),
-	          _react2.default.createElement(_TestList2.default, {
-	            showTestDetails: function showTestDetails(test) {
-	              return _this3.showTestDetails(test);
-	            },
-	            tests: this.state.tests }),
 	          _react2.default.createElement(
-	            'p',
+	            'h4',
 	            null,
-	            _react2.default.createElement(
-	              'a',
-	              { href: '#', onClick: function onClick(e) {
-	                  return _this3.showAddTest(e);
-	                } },
-	              'Add test'
-	            )
-	          ),
-	          this.state.addTestVisible && _react2.default.createElement(_AddTest2.default, {
-	            finishAdd: function finishAdd(err) {
-	              return _this3.refreshList(err);
-	            } }),
-	          this.state.detailsVisible && _react2.default.createElement(_TestDetails2.default, {
-	            isVisible: this.state.detailsVisible,
-	            hideDetails: function hideDetails() {
-	              return _this3.hideDetails();
-	            },
-	            test: this.state.activeTest })
+	            'Test it real good.'
+	          )
 	        ),
+	        _react2.default.createElement('hr', null),
 	        _react2.default.createElement(
 	          'div',
-	          null,
-	          _react2.default.createElement(_ErrorMessage2.default, { error: this.state.error }),
+	          { className: 'row' },
 	          _react2.default.createElement(
-	            'h1',
-	            null,
-	            'Technologies!'
-	          ),
-	          _react2.default.createElement(_TechnologyList2.default, {
-	            showTechnologyDetails: function showTechnologyDetails(technology) {
-	              return _this3.showTechnologyDetails(technology);
-	            },
-	            technologies: this.state.technologies }),
-	          _react2.default.createElement(
-	            'p',
-	            null,
+	            'div',
+	            { className: 'testing col-md-6' },
+	            _react2.default.createElement(_ErrorMessage2.default, { error: this.state.error }),
+	            _react2.default.createElement(_TestList2.default, {
+	              showTestDetails: function showTestDetails(test) {
+	                return _this3.showTestDetails(test);
+	              },
+	              tests: this.state.tests }),
 	            _react2.default.createElement(
-	              'a',
-	              { href: '#', onClick: function onClick(e) {
-	                  return _this3.showAddTechnology(e);
-	                } },
-	              'Add technology'
-	            )
+	              'p',
+	              { className: 'add-test' },
+	              _react2.default.createElement(
+	                'a',
+	                { href: '#', onClick: function onClick(e) {
+	                    return _this3.showAddTest(e);
+	                  } },
+	                'Add test'
+	              )
+	            ),
+	            this.state.addTestVisible && _react2.default.createElement(_AddTest2.default, {
+	              finishAdd: function finishAdd(err) {
+	                return _this3.refreshList(err);
+	              } }),
+	            this.state.detailsVisible && _react2.default.createElement(_TestDetails2.default, {
+	              isVisible: this.state.detailsVisible,
+	              hideDetails: function hideDetails() {
+	                return _this3.hideDetails();
+	              },
+	              test: this.state.activeTest })
 	          ),
-	          this.state.addTechnologyVisible && _react2.default.createElement(_AddTechnology2.default, {
-	            finishAdd: function finishAdd(err) {
-	              return _this3.refreshList(err);
-	            } }),
-	          this.state.technologyDetailsVisible && _react2.default.createElement(_TechnologyDetails2.default, {
-	            isVisible: this.state.technologyDetailsVisible,
-	            hideDetails: function hideDetails() {
-	              return _this3.hideDetails();
-	            },
-	            technology: this.state.activeTechnology })
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'technology col-md-6' },
+	            _react2.default.createElement(_ErrorMessage2.default, { error: this.state.error }),
+	            _react2.default.createElement(_TechnologyList2.default, {
+	              showTechnologyDetails: function showTechnologyDetails(technology) {
+	                return _this3.showTechnologyDetails(technology);
+	              },
+	              technologies: this.state.technologies }),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'add-tech' },
+	              _react2.default.createElement(
+	                'a',
+	                { href: '#', onClick: function onClick(e) {
+	                    return _this3.showAddTechnology(e);
+	                  } },
+	                'Add technology'
+	              )
+	            ),
+	            this.state.addTechnologyVisible && _react2.default.createElement(_AddTechnology2.default, {
+	              finishAdd: function finishAdd(err) {
+	                return _this3.refreshList(err);
+	              } }),
+	            this.state.technologyDetailsVisible && _react2.default.createElement(_TechnologyDetails2.default, {
+	              isVisible: this.state.technologyDetailsVisible,
+	              hideDetails: function hideDetails() {
+	                return _this3.hideDetails();
+	              },
+	              technology: this.state.activeTechnology })
+	          )
 	        )
 	      );
 	    }
@@ -22101,7 +22107,6 @@
 	    if (err) {
 	      callback(err);
 	    } else {
-	      console.log(res.body);
 	      callback(null, res.body);
 	    }
 	  });
@@ -22112,7 +22117,6 @@
 	    if (err) {
 	      callback(err);
 	    } else {
-	      console.log(res.body);
 	      callback(null, res.body);
 	    }
 	  });
@@ -23866,16 +23870,20 @@
 	    { className: 'test-list' },
 	    _react2.default.createElement(
 	      'h2',
-	      null,
-	      'TESTING LIBRARIES'
+	      { className: 'library-header' },
+	      'Testing Libraries'
 	    ),
-	    props.tests.map(function (test) {
-	      return _react2.default.createElement(_TestListItem2.default, {
-	        key: test.id,
-	        test: test,
-	        hideDetails: props.hideDetails,
-	        showTestDetails: props.showTestDetails });
-	    })
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'libraryList' },
+	      props.tests.map(function (test) {
+	        return _react2.default.createElement(_TestListItem2.default, {
+	          key: test.id,
+	          test: test,
+	          hideDetails: props.hideDetails,
+	          showTestDetails: props.showTestDetails });
+	      })
+	    )
 	  );
 	};
 
@@ -23956,7 +23964,11 @@
 	      'p',
 	      null,
 	      'Installation: ',
-	      test.installation
+	      _react2.default.createElement(
+	        'a',
+	        { href: test.installation },
+	        test.installation
+	      )
 	    ),
 	    _react2.default.createElement(
 	      'p',
@@ -23967,7 +23979,7 @@
 	    _react2.default.createElement(
 	      'div',
 	      null,
-	      _react2.default.createElement('img', { src: test.img_url })
+	      _react2.default.createElement('img', { className: 'image', src: test.img_url })
 	    ),
 	    _react2.default.createElement(
 	      'a',
@@ -24117,7 +24129,7 @@
 	    { className: 'technology-list' },
 	    _react2.default.createElement(
 	      'h2',
-	      null,
+	      { className: 'tech-header' },
 	      'Technology List'
 	    ),
 	    props.technologies.map(function (technology) {
