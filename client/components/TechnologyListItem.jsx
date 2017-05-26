@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default ({technology, showDetails}) => {
+export default ({technology, showTechnologyDetails}) => {
   return (
     <div className="technology-list-item">
-      {`${technology.name} `}
-      <a href="#" onClick={() => showDetails(technology)}>tests</a>
+      {`${technology.technologies_name} `}
+      <a href="#" onClick={() => showTechnologyDetails(technology)}>Tests</a>
     </div>
   )
 }

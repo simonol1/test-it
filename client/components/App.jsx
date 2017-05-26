@@ -65,6 +65,25 @@ export default class App extends React.Component {
       addTechnologyVisible: true
     })
   }
+  showTestDetails (test) {
+    this.setState({
+      activeTest: test,
+      detailsVisible: true
+    })
+  }
+
+  showTechnologyDetails (technology) {
+    this.setState({
+      activeTechnology: technology,
+      technologyDetailsVisible: true
+    })
+  }
+
+  hideDetails () {
+    this.setState({
+      detailsVisible: false
+    })
+  }
 
   render () {
     return (
@@ -93,8 +112,8 @@ export default class App extends React.Component {
         <p><a href='#' onClick={(e) => this.showAddTechnology(e)}>Add technology</a></p>
         {this.state.addTechnologyVisible && <AddTechnology
           finishAdd={(err) => this.refreshList(err)} />}
-        {this.state.detailsVisible && <TechnologyDetails
-          isVisible={this.state.detailsVisible}
+        {this.state.technologyDetailsVisible && <TechnologyDetails
+          isVisible={this.state.technologyDetailsVisible}
           hideDetails={() => this.hideDetails()}
           technology={this.state.activeTechnology} />}
       </div>
@@ -102,23 +121,4 @@ export default class App extends React.Component {
     )
   }
 
-  showTestDetails (test) {
-    this.setState({
-      activeTest: test,
-      detailsVisible: true
-    })
-  }
-
-  showTechnologyDetails (technology) {
-    this.setState({
-      activeTechnology: technology,
-      detailsVisible: true
-    })
-  }
-
-  hideDetails () {
-    this.setState({
-      detailsVisible: false
-    })
-  }
 }
