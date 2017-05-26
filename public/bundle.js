@@ -21926,6 +21926,7 @@
 	        error: err,
 	        tests: tests || []
 	      });
+	      console.log(this.state);
 	    }
 	  }, {
 	    key: 'renderTechnologies',
@@ -21934,6 +21935,7 @@
 	        error: err,
 	        technologies: technologies || []
 	      });
+	      console.log(this.state);
 	    }
 	  }, {
 	    key: 'refreshList',
@@ -21959,6 +21961,30 @@
 	    value: function showAddTechnology() {
 	      this.setState({
 	        addTechnologyVisible: true
+	      });
+	    }
+	  }, {
+	    key: 'showTestDetails',
+	    value: function showTestDetails(test) {
+	      this.setState({
+	        activeTest: test,
+	        detailsVisible: true
+	      });
+	    }
+	  }, {
+	    key: 'showTechnologyDetails',
+	    value: function showTechnologyDetails(technology) {
+	      console.log(technology);
+	      this.setState({
+	        activeTechnology: technology,
+	        technologyDetailsVisible: true
+	      });
+	    }
+	  }, {
+	    key: 'hideDetails',
+	    value: function hideDetails() {
+	      this.setState({
+	        detailsVisible: false
 	      });
 	    }
 	  }, {
@@ -22043,30 +22069,6 @@
 	        )
 	      );
 	    }
-	  }, {
-	    key: 'showTestDetails',
-	    value: function showTestDetails(test) {
-	      this.setState({
-	        activeTest: test,
-	        detailsVisible: true
-	      });
-	    }
-	  }, {
-	    key: 'showTechnologyDetails',
-	    value: function showTechnologyDetails(technology) {
-	      console.log(technology);
-	      this.setState({
-	        activeTechnology: technology,
-	        technologyDetailsVisible: true
-	      });
-	    }
-	  }, {
-	    key: 'hideDetails',
-	    value: function hideDetails() {
-	      this.setState({
-	        detailsVisible: false
-	      });
-	    }
 	  }]);
 	
 	  return App;
@@ -22086,8 +22088,8 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var testLibUrl = 'http://localhost:3000/testLib';
-	var technologiesUrl = 'http://localhost:3000/technologies';
+	var testLibUrl = '/testLib';
+	var technologiesUrl = '/technologies';
 	
 	module.exports = {
 	  getTestLib: getTestLib,
@@ -22099,6 +22101,7 @@
 	    if (err) {
 	      callback(err);
 	    } else {
+	      console.log(res.body);
 	      callback(null, res.body);
 	    }
 	  });
@@ -22109,6 +22112,7 @@
 	    if (err) {
 	      callback(err);
 	    } else {
+	      console.log(res.body);
 	      callback(null, res.body);
 	    }
 	  });
