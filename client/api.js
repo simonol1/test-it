@@ -15,6 +15,7 @@ function getTestLib (callback) {
       if (err) {
         callback(err)
       } else {
+        console.log(res.body);
         callback(null, res.body)
       }
     })
@@ -27,6 +28,7 @@ function getTechnologies(callback) {
       if (err) {
         callback(err)
       } else {
+        console.log(res.body);
         callback(null, res.body)
       }
   })
