@@ -97,8 +97,8 @@ export default class App extends React.Component {
         <p><a href='#' onClick={(e) => this.showAddTest(e)}>Add test</a></p>
         {this.state.addTestVisible && <AddTest
           finishAdd={(err) => this.refreshList(err)} />}
-        {this.state.detailsVisible && <TestDetails
-          isVisible={this.state.detailsVisible}
+        {this.state.testDetailsVisible && <TestDetails
+          isVisible={this.state.testDetailsVisible}
           hideDetails={() => this.hideDetails()}
           test={this.state.activeTest} />}
       </div>
