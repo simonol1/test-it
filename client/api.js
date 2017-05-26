@@ -5,7 +5,9 @@ var technologiesUrl = '/technologies'
 
 module.exports = {
   getTestLib,
-  getTechnologies
+  getTechnologies,
+  appendTest,
+  appendTechnology
 }
 
 function getTestLib (callback) {
@@ -30,4 +32,30 @@ function getTechnologies(callback) {
         callback(null, res.body)
       }
   })
+}
+
+function appendTest (test, callback) {
+  request
+    .post(testLibUrl)
+    .send(test)
+    .end(function (err, res) {
+      if (err) {
+        callback(err)
+      } else {
+        callback(null)
+      }
+    })
+}
+
+function appendTechnology (technology, callback) {
+  request
+    .post(technologiesUrl)
+    .send(technology)
+    .end(function (err, res) {
+      if (err) {
+        callback(err)
+      } else {
+        callback(null)
+      }
+    })
 }
