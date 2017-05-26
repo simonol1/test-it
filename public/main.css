@@ -1,8 +1,15 @@
-.widget-details .visible {
+.test-details .visible {
   display: block;
 }
 
-.widget-details .hidden {
+.test-details .hidden {
   display: none;
 }
 
+.language-details .visible {
+  display: block;
+}
+
+.language-details .hidden {
+  display: none;
+}

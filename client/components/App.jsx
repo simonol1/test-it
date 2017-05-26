@@ -1,9 +1,12 @@
 import React from 'react'
 
 import * as api from '../api'
-import AddWidget from './AddWidget'
-import WidgetList from './WidgetList'
-import WidgetDetails from './WidgetDetails'
+import AddTest from './AddTest'
+import TestList from './TestList'
+import TestDetails from './TestDetails'
+import AddLanguage from './AddLanguage'
+import LanguageList from './LanguageList'
+import LanguageDetails from './LanguageDetails'
 import ErrorMessage from './ErrorMessage'
 
 export default class App extends React.Component {
@@ -11,60 +14,104 @@ export default class App extends React.Component {
     super(props)
     this.state = {
       error: null,
-      widgets: [],
-      activeWidget: null,
+      tests: [],
+      languages: [],
+      activeTest: null,
+      activeLanguage: null,
       detailsVisible: false,
-      addWidgetVisible: false
+      addTestVisible: false,
+      addLanguageVisible: false
     }
   }
 
   componentDidMount () {
-    api.getWidgets((err, widgets) => this.renderWidgets(err, widgets))
+    api.getTestLib((err, tests) => this.renderTests(err, tests))
+    api.getLanguages((err, languages) => this.renderLanguages(err, languages))
   }
 
-  renderWidgets (err, widgets) {
+  renderTests (err, tests) {
     this.setState({
       error: err,
-      widgets: widgets || []
+      tests: tests || []
+    })
+  }
+
+  renderLanguages (err, languages) {
+    this.setState({
+      error: err,
+      languages: languages || []
     })
   }
 
   refreshList (err) {
     this.setState({
       error: err,
-      addWidgetVisible: false
+      addTestVisible: false,
+      addLanguageVisible: false
+
     })
-    api.getWidgets(this.renderWidgets.bind(this))
+    api.getTests(this.renderTests.bind(this))
+    api.getLanguages(this.renderLanguages.bind(this))
   }
 
-  showAddWidget () {
+  showAddTest () {
     this.setState({
-      addWidgetVisible: true
+      addTestVisible: true
+    })
+  }
+
+  showAddLanguage () {
+    this.setState({
+      addLanguageVisible: true
     })
   }
 
   render () {
     return (
+    <div className="app">
       <div>
         <ErrorMessage error={this.state.error} />
-        <h1>Widgets FTW!</h1>
-        <WidgetList
-          showDetails={(widget) => this.showDetails(widget)}
-          widgets={this.state.widgets} />
-        <p><a href='#' onClick={(e) => this.showAddWidget(e)}>Add widget</a></p>
-        {this.state.addWidgetVisible && <AddWidget
+        <h1>Test-it</h1>
+        <TestList
+          showTestDetails={(test) => this.showTestDetails(test)}
+          tests={this.state.tests} />
+        <p><a href='#' onClick={(e) => this.showAddTest(e)}>Add test</a></p>
+        {this.state.addTestVisible && <AddTest
           finishAdd={(err) => this.refreshList(err)} />}
-        {this.state.detailsVisible && <WidgetDetails
+        {this.state.detailsVisible && <TestDetails
           isVisible={this.state.detailsVisible}
           hideDetails={() => this.hideDetails()}
-          widget={this.state.activeWidget} />}
+          test={this.state.activeTest} />}
       </div>
+
+      <div>
+        <ErrorMessage error={this.state.error} />
+        <h1>Languages!</h1>
+        <LanguageList
+          showLanguageDetails={(language) => this.showLanguageDetails(language)}
+          languages={this.state.languages} />
+        <p><a href='#' onClick={(e) => this.showAddLanguage(e)}>Add language</a></p>
+        {this.state.addLanguageVisible && <AddLanguage
+          finishAdd={(err) => this.refreshList(err)} />}
+        {this.state.detailsVisible && <LanguageDetails
+          isVisible={this.state.detailsVisible}
+          hideDetails={() => this.hideDetails()}
+          language={this.state.activeLanguage} />}
+      </div>
+    </div>
     )
   }
 
-  showDetails (widget) {
+  showTestDetails (test) {
     this.setState({
-      activeWidget: widget,
+      activeTest: test,
+      detailsVisible: true
+    })
+  }
+
+  showLanguageDetails (language) {
+    this.setState({
+      activeLanguage: language,
       detailsVisible: true
     })
   }
