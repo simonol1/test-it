@@ -50,7 +50,7 @@ export default class App extends React.Component {
       addTechnologyVisible: false
 
     })
-    api.getTests(this.renderTests.bind(this))
+    api.getTestLib(this.renderTests.bind(this))
     api.getTechnologies(this.renderTechnologies.bind(this))
   }
 

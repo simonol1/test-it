@@ -21926,7 +21926,6 @@
 	        error: err,
 	        tests: tests || []
 	      });
-	      console.log(this.state);
 	    }
 	  }, {
 	    key: 'renderTechnologies',
@@ -21935,7 +21934,6 @@
 	        error: err,
 	        technologies: technologies || []
 	      });
-	      console.log(this.state);
 	    }
 	  }, {
 	    key: 'refreshList',
@@ -21946,7 +21944,7 @@
 	        addTechnologyVisible: false
 	
 	      });
-	      api.getTests(this.renderTests.bind(this));
+	      api.getTestLib(this.renderTests.bind(this));
 	      api.getTechnologies(this.renderTechnologies.bind(this));
 	    }
 	  }, {
@@ -21974,7 +21972,6 @@
 	  }, {
 	    key: 'showTechnologyDetails',
 	    value: function showTechnologyDetails(technology) {
-	      console.log(technology);
 	      this.setState({
 	        activeTechnology: technology,
 	        technologyDetailsVisible: true
@@ -22093,7 +22090,9 @@
 	
 	module.exports = {
 	  getTestLib: getTestLib,
-	  getTechnologies: getTechnologies
+	  getTechnologies: getTechnologies,
+	  appendTest: appendTest,
+	  appendTechnology: appendTechnology
 	};
 	
 	function getTestLib(callback) {
@@ -22101,7 +22100,6 @@
 	    if (err) {
 	      callback(err);
 	    } else {
-	      console.log(res.body);
 	      callback(null, res.body);
 	    }
 	  });
@@ -22112,8 +22110,27 @@
 	    if (err) {
 	      callback(err);
 	    } else {
-	      console.log(res.body);
 	      callback(null, res.body);
+	    }
+	  });
+	}
+	
+	function appendTest(test, callback) {
+	  _superagent2.default.post(testLibUrl).send(test).end(function (err, res) {
+	    if (err) {
+	      callback(err);
+	    } else {
+	      callback(null);
+	    }
+	  });
+	}
+	
+	function appendTechnology(technology, callback) {
+	  _superagent2.default.post(technologiesUrl).send(technology).end(function (err, res) {
+	    if (err) {
+	      callback(err);
+	    } else {
+	      callback(null);
 	    }
 	  });
 	}
@@ -23745,10 +23762,10 @@
 	    var _this = _possibleConstructorReturn(this, (AddTest.__proto__ || Object.getPrototypeOf(AddTest)).call(this, props));
 	
 	    _this.state = {
-	      name: '',
+	      test_name: '',
 	      installation: '',
 	      description: '',
-	      image: ''
+	      img_url: ''
 	    };
 	    return _this;
 	  }
@@ -23779,7 +23796,7 @@
 	          _react2.default.createElement(
 	            'p',
 	            null,
-	            _react2.default.createElement('input', { placeholder: 'Name', name: 'name',
+	            _react2.default.createElement('input', { placeholder: 'Name', name: 'test_name',
 	              onChange: function onChange(e) {
 	                return _this2.fieldChanged(e);
 	              },
@@ -23809,7 +23826,7 @@
 	          _react2.default.createElement(
 	            'p',
 	            null,
-	            _react2.default.createElement('input', { placeholder: 'Image', name: 'image',
+	            _react2.default.createElement('input', { placeholder: 'Image', name: 'img_url',
 	              onChange: function onChange(e) {
 	                return _this2.fieldChanged(e);
 	              },
