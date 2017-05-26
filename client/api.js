@@ -1,15 +1,16 @@
 import request from 'superagent'
 
-var widgetUrl = 'http://localhost:3000/widgets'
+var testLibUrl = 'http://localhost:3000/testLib'
+var technologiesUrl = 'http://localhost:3000/technologies'
 
 module.exports = {
-  getWidgets: getWidgets,
-  appendWidget: appendWidget
+  getTestLib,
+  getTechnologies
 }
 
-function getWidgets (callback) {
+function getTestLib (callback) {
   request
-    .get(widgetUrl)
+    .get(testLibUrl)
     .end(function (err, res) {
       if (err) {
         callback(err)
@@ -19,15 +20,14 @@ function getWidgets (callback) {
     })
 }
 
-function appendWidget (widget, callback) {
+function getTechnologies(callback) {
   request
-    .post(widgetUrl)
-    .send(widget)
+    .get(technologiesUrl)
     .end(function (err, res) {
       if (err) {
         callback(err)
       } else {
-        callback(null)
+        callback(null, res.body)
       }
-    })
+  })
 }
