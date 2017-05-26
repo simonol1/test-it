@@ -34,7 +34,6 @@ export default class App extends React.Component {
       error: err,
       tests: tests || []
     })
-    console.log(this.state);
   }
 
   renderTechnologies (err, technologies) {
@@ -42,7 +41,6 @@ export default class App extends React.Component {
       error: err,
       technologies: technologies || []
     })
-    console.log(this.state);
   }
 
   refreshList (err) {
@@ -75,7 +73,6 @@ export default class App extends React.Component {
   }
 
   showTechnologyDetails (technology) {
-    console.log(technology)
     this.setState({
       activeTechnology: technology,
       technologyDetailsVisible: true
