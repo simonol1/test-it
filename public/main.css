@@ -6,10 +6,10 @@
   display: none;
 }
 
-.language-details .visible {
+.technology-details .visible {
   display: block;
 }
 
-.language-details .hidden {
+.technology-details .hidden {
   display: none;
 }
