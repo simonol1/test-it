@@ -1,17 +1,16 @@
 import request from 'superagent'
 
-var testItUrl = 'http://localhost:3000/test-it'
+var testLibUrl = 'http://localhost:3000/testLib'
+var technologiesUrl = 'http://localhost:3000/technologies'
 
 module.exports = {
-  getTestLib: getTestLib,
-  appendTestLib: appendTestLib,
-  getLanguages: getLanguages,
-  appendLanguage: appendLanguage
+  getTestLib,
+  getTechnologies
 }
 
 function getTestLib (callback) {
   request
-    .get(testItUrl)
+    .get(testLibUrl)
     .end(function (err, res) {
       if (err) {
         callback(err)
@@ -21,43 +20,14 @@ function getTestLib (callback) {
     })
 }
 
-
-function appendTestLib (test, callback) {
+function getTechnologies(callback) {
   request
-    .post(testItUrl)
-    .send(test)
-    .end(function (err, res) {
-      if (err) {
-        callback(err)
-      } else {
-        callback(null)
-      }
-    })
-}
-
-
-
-function getLanguages (callback) {
-  request
-    .get(testItUrl)
+    .get(technologiesUrl)
     .end(function (err, res) {
       if (err) {
         callback(err)
       } else {
         callback(null, res.body)
       }
-    })
-}
-
-function appendLanguage (language, callback) {
-  request
-    .post(testItUrl)
-    .send(language)
-    .end(function (err, res) {
-      if (err) {
-        callback(err)
-      } else {
-        callback(null)
-      }
-    })
+  })
 }
