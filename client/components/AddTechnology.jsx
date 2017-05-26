@@ -2,11 +2,11 @@ import React from 'react'
 
 import api from '../api'
 
-export default class AddLanguage extends React.Component {
+export default class AddTechnology extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      language_name: '',
+      technologies_name: '',
       tests: ''
     }
   }
@@ -18,25 +18,25 @@ export default class AddLanguage extends React.Component {
     })
   }
 
-  addLanguage (e) {
+  addTechnology (e) {
     e.preventDefault()
-    const language = this.state
-    api.appendLanguage(language, this.props.finishAdd)
+    const technology = this.state
+    api.appendTechnology(technology, this.props.finishAdd)
   }
 
   render () {
     return (
-      <div className="add-language">
+      <div className="add-technology">
         <form>
-          <p><input placeholder="Enter language name" name='language_name'
+          <p><input placeholder="Enter technology name" name='technologies_name'
             onChange={e => this.fieldChanged(e)}
-            value={this.state.language_name}
+            value={this.state.technologies_name}
             /></p>
           <p><input placeholder="Enter tests" name='tests'
             onChange={e => this.fieldChanged(e)}
             value={this.state.tests}
             /></p>
-          <button onClick={e => this.addLanguage(e)}>Add language</button> {' '}
+          <button onClick={e => this.addTechnology(e)}>Add technology</button> {' '}
           <a href="#" onClick={this.props.finishAdd}>Cancel</a>
         </form>
       </div>

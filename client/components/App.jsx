@@ -4,9 +4,9 @@ import * as api from '../api'
 import AddTest from './AddTest'
 import TestList from './TestList'
 import TestDetails from './TestDetails'
-import AddLanguage from './AddLanguage'
-import LanguageList from './LanguageList'
-import LanguageDetails from './LanguageDetails'
+import AddTechnology from './AddTechnology'
+import TechnologyList from './TechnologyList'
+import TechnologyDetails from './TechnologyDetails'
 import ErrorMessage from './ErrorMessage'
 
 export default class App extends React.Component {
@@ -15,18 +15,18 @@ export default class App extends React.Component {
     this.state = {
       error: null,
       tests: [],
-      languages: [],
+      technologies: [],
       activeTest: null,
-      activeLanguage: null,
+      activeTechnology: null,
       detailsVisible: false,
       addTestVisible: false,
-      addLanguageVisible: false
+      addTechnologyVisible: false
     }
   }
 
   componentDidMount () {
     api.getTestLib((err, tests) => this.renderTests(err, tests))
-    api.getLanguages((err, languages) => this.renderLanguages(err, languages))
+    api.getTechnologies((err, technologies) => this.renderTechnologies(err, technologies))
   }
 
   renderTests (err, tests) {
@@ -36,10 +36,10 @@ export default class App extends React.Component {
     })
   }
 
-  renderLanguages (err, languages) {
+  renderTechnologies (err, technologies) {
     this.setState({
       error: err,
-      languages: languages || []
+      technologies: technologies || []
     })
   }
 
@@ -47,11 +47,11 @@ export default class App extends React.Component {
     this.setState({
       error: err,
       addTestVisible: false,
-      addLanguageVisible: false
+      addTechnologyVisible: false
 
     })
     api.getTests(this.renderTests.bind(this))
-    api.getLanguages(this.renderLanguages.bind(this))
+    api.getTechnologies(this.renderTechnologies.bind(this))
   }
 
   showAddTest () {
@@ -60,9 +60,9 @@ export default class App extends React.Component {
     })
   }
 
-  showAddLanguage () {
+  showAddTechnology () {
     this.setState({
-      addLanguageVisible: true
+      addTechnologyVisible: true
     })
   }
 
@@ -86,17 +86,17 @@ export default class App extends React.Component {
 
       <div>
         <ErrorMessage error={this.state.error} />
-        <h1>Languages!</h1>
-        <LanguageList
-          showLanguageDetails={(language) => this.showLanguageDetails(language)}
-          languages={this.state.languages} />
-        <p><a href='#' onClick={(e) => this.showAddLanguage(e)}>Add language</a></p>
-        {this.state.addLanguageVisible && <AddLanguage
+        <h1>Technologies!</h1>
+        <TechnologyList
+          showTechnologyDetails={(technology) => this.showTechnologyDetails(technology)}
+          technologies={this.state.technologies} />
+        <p><a href='#' onClick={(e) => this.showAddTechnology(e)}>Add technology</a></p>
+        {this.state.addTechnologyVisible && <AddTechnology
           finishAdd={(err) => this.refreshList(err)} />}
-        {this.state.detailsVisible && <LanguageDetails
+        {this.state.detailsVisible && <TechnologyDetails
           isVisible={this.state.detailsVisible}
           hideDetails={() => this.hideDetails()}
-          language={this.state.activeLanguage} />}
+          technology={this.state.activeTechnology} />}
       </div>
     </div>
     )
@@ -109,9 +109,9 @@ export default class App extends React.Component {
     })
   }
 
-  showLanguageDetails (language) {
+  showTechnologyDetails (technology) {
     this.setState({
-      activeLanguage: language,
+      activeTechnology: technology,
       detailsVisible: true
     })
   }
