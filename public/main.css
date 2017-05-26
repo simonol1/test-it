@@ -7,6 +7,7 @@ body {
 
 .test-details .visible {
   display: block;
+  text-align: center;
 }
 
 .test-details .hidden {
@@ -15,6 +16,7 @@ body {
 
 .technology-details .visible {
   display: block;
+  text-align: center;
 }
 
 .technology-details .hidden {
@@ -51,6 +53,10 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+.technology-details h2, p, a {
+  text-align: center;
+}
+
 .technology-list {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
@@ -80,6 +86,10 @@ body {
 .add-test, .add-tech {
   text-align: center;
   margin-top: 25px;
+}
+
+.tech-header {
+  text-align: center;
 }
 
 .image {

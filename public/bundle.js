@@ -24205,7 +24205,7 @@
 	    { className: classes },
 	    _react2.default.createElement(
 	      'h2',
-	      null,
+	      { className: 'tech-header' },
 	      'Tests'
 	    ),
 	    _react2.default.createElement(
