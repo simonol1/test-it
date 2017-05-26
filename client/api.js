@@ -1,7 +1,7 @@
 import request from 'superagent'
 
-var testLibUrl = 'http://localhost:3000/testLib'
-var technologiesUrl = 'http://localhost:3000/technologies'
+var testLibUrl = '/testLib'
+var technologiesUrl = '/technologies'
 
 module.exports = {
   getTestLib,
