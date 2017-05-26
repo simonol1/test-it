@@ -1,26 +1,42 @@
 module.exports = {
   getLanguages: getLanguages,
-  saveLanguage: saveLanguage
+  saveLanguage: saveLanguage,
+  getTestLib: getTestLib,
+  saveTestLib: saveTestLib
 }
+
+var tests = [{
+  id: 1,
+  name: 'Enzyme',
+  installation: 23.45,
+  description: 'Acme Inc.',
+  image: 4
+}, {
+  id: 2,
+  name: 'Ava',
+  installation: 423.47,
+  description: 'Acme Inc.',
+  image: 8
+}, {
+  id: 3,
+  name: 'Cheerio',
+  installation: 123.40,
+  description: 'Acme Inc.',
+  image: 3
+}]
 
 var languages = [{
   id: 1,
-  name: 'knex',
-  price: 23.45,
-  mfg: 'Acme Inc.',
-  inStock: 4
+  language_name: 'knex',
+  tests: 'ava, tape'
 }, {
   id: 2,
-  name: 'api',
-  price: 423.47,
-  mfg: 'Acme Inc.',
-  inStock: 8
+  language_name: 'knex',
+  tests: 'ava, tape'
 }, {
   id: 3,
-  name: 'html',
-  price: 123.40,
-  mfg: 'Acme Inc.',
-  inStock: 3
+  language_name: 'knex',
+  tests: 'ava, tape'
 }]
 
 function getLanguages () {
@@ -30,4 +46,15 @@ function getLanguages () {
 function saveLanguage (language) {
   language.id = languages.length + 1
   languages.push(language)
+
+}
+
+
+function getTestLib () {
+  return tests
+}
+
+function saveTestLib (test) {
+  test.id = tests.length + 1
+  tests.push(tests)
 }

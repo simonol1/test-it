@@ -1,3 +1,11 @@
+.test-details .visible {
+  display: block;
+}
+
+.test-details .hidden {
+  display: none;
+}
+
 .language-details .visible {
   display: block;
 }

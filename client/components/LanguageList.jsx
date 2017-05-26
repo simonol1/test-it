@@ -10,7 +10,7 @@ export default (props) => {
         key={language.id}
         language={language}
         hideDetails={props.hideDetails}
-        showDetails={props.showDetails} />
+        showLanguageDetails={props.showLanguageDetails} />
     })}
     </div>
   )
