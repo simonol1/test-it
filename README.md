@@ -18,7 +18,7 @@ To show the possible testing libraries and the frameworks they are used to test
 
 ---
 
-## Instructions for use"
+## Instructions for use
 - git clone https://github.com/simonol1/test-it.git
 - navigate to the test-it repo
 - npm i
