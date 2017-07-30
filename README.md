@@ -23,4 +23,3 @@ To show the possible testing libraries and the frameworks they are used to test
 - navigate to the test-it repo
 - npm i
 - atom .
-- git checkout Develop
