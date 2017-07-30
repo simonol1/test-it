@@ -2,14 +2,14 @@ import React from 'react'
 
 import api from '../api'
 
-export default class AddWidget extends React.Component {
+export default class AddTest extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: '',
-      price: '',
-      mfg: '',
-      inStock: ''
+      test_name: '',
+      installation: '',
+      description: '',
+      img_url: ''
     }
   }
 
@@ -20,33 +20,33 @@ export default class AddWidget extends React.Component {
     })
   }
 
-  addWidget (e) {
+  addTest (e) {
     e.preventDefault()
-    const widget = this.state
-    api.appendWidget(widget, this.props.finishAdd)
+    const test = this.state
+    api.appendTest(test, this.props.finishAdd)
   }
 
   render () {
     return (
-      <div className="add-widget">
+      <div className="add-test">
         <form>
-          <p><input placeholder="Name" name='name'
+          <p><input placeholder="Name" name='test_name'
             onChange={e => this.fieldChanged(e)}
             value={this.state.name}
             /></p>
-          <p><input placeholder="Price" name='price'
+          <p><input placeholder="Installation" name='installation'
             onChange={e => this.fieldChanged(e)}
             value={this.state.price}
             /></p>
-          <p><input placeholder="Manufacturer" name='mfg'
+          <p><input placeholder="Description" name='description'
             onChange={e => this.fieldChanged(e)}
             value={this.state.mfg}
             /></p>
-          <p><input placeholder="In stock" name='inStock'
+          <p><input placeholder="Image" name='img_url'
             onChange={e => this.fieldChanged(e)}
             value={this.state.inStock}
             /></p>
-          <button onClick={e => this.addWidget(e)}>Add widget</button> {' '}
+          <button onClick={e => this.addTest(e)}>Add test</button> {' '}
           <a href="#" onClick={this.props.finishAdd}>Cancel</a>
         </form>
       </div>

@@ -1,9 +1,12 @@
 import React from 'react'
 
 import * as api from '../api'
-import AddWidget from './AddWidget'
-import WidgetList from './WidgetList'
-import WidgetDetails from './WidgetDetails'
+import AddTest from './AddTest'
+import TestList from './TestList'
+import TestDetails from './TestDetails'
+import AddTechnology from './AddTechnology'
+import TechnologyList from './TechnologyList'
+import TechnologyDetails from './TechnologyDetails'
 import ErrorMessage from './ErrorMessage'
 
 export default class App extends React.Component {
@@ -11,61 +14,68 @@ export default class App extends React.Component {
     super(props)
     this.state = {
       error: null,
-      widgets: [],
-      activeWidget: null,
+      tests: [],
+      technologies: [],
+      activeTest: null,
+      activeTechnology: null,
       detailsVisible: false,
-      addWidgetVisible: false
+      addTestVisible: false,
+      addTechnologyVisible: false
     }
   }
 
   componentDidMount () {
-    api.getWidgets((err, widgets) => this.renderWidgets(err, widgets))
+    api.getTestLib((err, tests) => this.renderTests(err, tests))
+    api.getTechnologies((err, technologies) => this.renderTechnologies(err, technologies))
   }
 
-  renderWidgets (err, widgets) {
+  renderTests (err, tests) {
     this.setState({
       error: err,
-      widgets: widgets || []
+      tests: tests || []
+    })
+  }
+
+  renderTechnologies (err, technologies) {
+    this.setState({
+      error: err,
+      technologies: technologies || []
     })
   }
 
   refreshList (err) {
     this.setState({
       error: err,
-      addWidgetVisible: false
+      addTestVisible: false,
+      addTechnologyVisible: false
+
     })
-    api.getWidgets(this.renderWidgets.bind(this))
+    api.getTestLib(this.renderTests.bind(this))
+    api.getTechnologies(this.renderTechnologies.bind(this))
   }
 
-  showAddWidget () {
+  showAddTest () {
     this.setState({
-      addWidgetVisible: true
+      addTestVisible: true
     })
   }
 
-  render () {
-    return (
-      <div>
-        <ErrorMessage error={this.state.error} />
-        <h1>Widgets FTW!</h1>
-        <WidgetList
-          showDetails={(widget) => this.showDetails(widget)}
-          widgets={this.state.widgets} />
-        <p><a href='#' onClick={(e) => this.showAddWidget(e)}>Add widget</a></p>
-        {this.state.addWidgetVisible && <AddWidget
-          finishAdd={(err) => this.refreshList(err)} />}
-        {this.state.detailsVisible && <WidgetDetails
-          isVisible={this.state.detailsVisible}
-          hideDetails={() => this.hideDetails()}
-          widget={this.state.activeWidget} />}
-      </div>
-    )
-  }
-
-  showDetails (widget) {
+  showAddTechnology () {
     this.setState({
-      activeWidget: widget,
+      addTechnologyVisible: true
+    })
+  }
+  showTestDetails (test) {
+    this.setState({
+      activeTest: test,
       detailsVisible: true
+    })
+  }
+
+  showTechnologyDetails (technology) {
+    this.setState({
+      activeTechnology: technology,
+      technologyDetailsVisible: true
     })
   }
 
@@ -74,4 +84,46 @@ export default class App extends React.Component {
       detailsVisible: false
     })
   }
+
+  render () {
+    return (
+    <div className="app container">
+      <div className = "header">
+        <h1>TEST IT!</h1>
+        <h4>Test it real good.</h4>
+      </div>
+      <hr/>
+      <div className = "row">
+        <div className = "testing col-md-6">
+          <ErrorMessage error={this.state.error} />
+          <TestList
+            showTestDetails={(test) => this.showTestDetails(test)}
+            tests={this.state.tests} />
+          <p className="add-test"><a href='#' onClick={(e) => this.showAddTest(e)}>Add test</a></p>
+          {this.state.addTestVisible && <AddTest
+            finishAdd={(err) => this.refreshList(err)} />}
+          {this.state.detailsVisible && <TestDetails
+            isVisible={this.state.detailsVisible}
+            hideDetails={() => this.hideDetails()}
+            test={this.state.activeTest} />}
+        </div>
+
+        <div className = "technology col-md-6">
+          <ErrorMessage error={this.state.error} />
+          <TechnologyList
+            showTechnologyDetails={(technology) => this.showTechnologyDetails(technology)}
+            technologies={this.state.technologies} />
+          <p className="add-tech"><a href='#' onClick={(e) => this.showAddTechnology(e)}>Add technology</a></p>
+          {this.state.addTechnologyVisible && <AddTechnology
+            finishAdd={(err) => this.refreshList(err)} />}
+          {this.state.technologyDetailsVisible && <TechnologyDetails
+            isVisible={this.state.technologyDetailsVisible}
+            hideDetails={() => this.hideDetails()}
+            technology={this.state.activeTechnology} />}
+        </div>
+      </div>
+    </div>
+    )
+  }
+
 }

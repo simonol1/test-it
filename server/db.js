@@ -1,33 +1,25 @@
 module.exports = {
-  getWidgets: getWidgets,
-  saveWidget: saveWidget
+  getTestLib: getTestLib,
+  getTechnologies: getTechnologies,
+  appendTechnology: appendTechnology,
+  appendTest: appendTest
 }
 
-var widgets = [{
-  id: 1,
-  name: 'Red widget',
-  price: 23.45,
-  mfg: 'Acme Inc.',
-  inStock: 4
-}, {
-  id: 2,
-  name: 'Blue widget',
-  price: 423.47,
-  mfg: 'Acme Inc.',
-  inStock: 8
-}, {
-  id: 3,
-  name: 'Yellow widget',
-  price: 123.40,
-  mfg: 'Acme Inc.',
-  inStock: 3
-}]
-
-function getWidgets () {
-  return widgets
+function getTestLib (connection) {
+  return connection('testLib')
 }
 
-function saveWidget (widget) {
-  widget.id = widgets.length + 1
-  widgets.push(widget)
+function getTechnologies (connection) {
+  return connection('technologies')
+}
+
+
+function appendTest (test, connection) {
+  return connection('testLib')
+    .insert(test)
+}
+
+function appendTechnology (data, connection) {
+  return connection('technologies')
+    .insert(data)
 }
