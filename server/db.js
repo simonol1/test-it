@@ -1,22 +1,25 @@
 module.exports = {
   getTestLib: getTestLib,
-  getTechnologies: getTechnologies
+  getTechnologies: getTechnologies,
+  appendTechnology: appendTechnology,
+  appendTest: appendTest
 }
 
 function getTestLib (connection) {
   return connection('testLib')
 }
 
-// function saveTestLib (connection) {
-//   test.id = tests.length + 1
-//   tests.push(tests)
-// }
-
 function getTechnologies (connection) {
   return connection('technologies')
 }
 
-// function saveTechnologies (test) {
-//   test.id = tests.length + 1
-//   tests.push(tests)
-// }
+
+function appendTest (test, connection) {
+  return connection('testLib')
+    .insert(test)
+}
+
+function appendTechnology (data, connection) {
+  return connection('technologies')
+    .insert(data)
+}

@@ -6,10 +6,10 @@ export default class AddTest extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: '',
+      test_name: '',
       installation: '',
       description: '',
-      image: ''
+      img_url: ''
     }
   }
 
@@ -30,7 +30,7 @@ export default class AddTest extends React.Component {
     return (
       <div className="add-test">
         <form>
-          <p><input placeholder="Name" name='name'
+          <p><input placeholder="Name" name='test_name'
             onChange={e => this.fieldChanged(e)}
             value={this.state.name}
             /></p>
@@ -42,7 +42,7 @@ export default class AddTest extends React.Component {
             onChange={e => this.fieldChanged(e)}
             value={this.state.mfg}
             /></p>
-          <p><input placeholder="Image" name='image'
+          <p><input placeholder="Image" name='img_url'
             onChange={e => this.fieldChanged(e)}
             value={this.state.inStock}
             /></p>
