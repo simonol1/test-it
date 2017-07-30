@@ -1,5 +1,13 @@
+body {
+  margin: auto;
+  padding: auto;
+  height: 100vh;
+  background-color: #FB3640;
+}
+
 .test-details .visible {
   display: block;
+  text-align: center;
 }
 
 .test-details .hidden {
@@ -8,8 +16,83 @@
 
 .technology-details .visible {
   display: block;
+  text-align: center;
 }
 
 .technology-details .hidden {
   display: none;
+}
+
+/***** Main Styling ****/
+
+#app {
+  background-color: #FB3640;
+  height: 100vh;
+}
+
+
+.container {
+  height: 100vh;
+  background-color: white;
+}
+
+.header {
+  text-align: center;
+  font-family: 'Montserrat Subrayada', sans-serif;
+  color: #0A2463;
+  margin: 15px 0px;
+  padding: 20px 0px;
+}
+.header h1 {
+  font-size: 90px;
+  text-shadow: 3px 3px #0056BC;
+}
+
+.testing {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.technology-details h2, p, a {
+  text-align: center;
+}
+
+.technology-list {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+}
+
+.libraryList {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+}
+
+.test-list-item, .technology-list-item {
+  padding: 15px 0px;
+}
+
+.tech-header, .library-header {
+  font-size: 42px;
+}
+
+.add-test a, .add-tech a {
+  border: 2px solid #0056BC;
+  padding: 5px 15px;
+  font-size: 24px;
+}
+
+.add-test, .add-tech {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.tech-header {
+  text-align: center;
+}
+
+.image {
+  height: 350px;
+  width: auto;
 }

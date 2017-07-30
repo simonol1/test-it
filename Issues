@@ -1,0 +1,13 @@
+# Issues
+
+## Functionalility
+- Error message appears on page when technology details is clicked on
+- The add test and add technology components do not actually work
+
+
+## CSS
+- The details appear at the bottom of the page and the user has to scroll to find them. It would be much better if the writting was smaller or the detals appears as an overlay sitting over the other technologies or tests
+- The close button is not centered
+
+## Updates
+- Add redux

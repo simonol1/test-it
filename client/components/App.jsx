@@ -87,35 +87,40 @@ export default class App extends React.Component {
 
   render () {
     return (
-    <div className="app">
-      <div>
-        <ErrorMessage error={this.state.error} />
-        <h1>Test-it</h1>
-        <TestList
-          showTestDetails={(test) => this.showTestDetails(test)}
-          tests={this.state.tests} />
-        <p><a href='#' onClick={(e) => this.showAddTest(e)}>Add test</a></p>
-        {this.state.addTestVisible && <AddTest
-          finishAdd={(err) => this.refreshList(err)} />}
-        {this.state.testDetailsVisible && <TestDetails
-          isVisible={this.state.testDetailsVisible}
-          hideDetails={() => this.hideDetails()}
-          test={this.state.activeTest} />}
+    <div className="app container">
+      <div className = "header">
+        <h1>TEST IT!</h1>
+        <h4>Test it real good.</h4>
       </div>
+      <hr/>
+      <div className = "row">
+        <div className = "testing col-md-6">
+          <ErrorMessage error={this.state.error} />
+          <TestList
+            showTestDetails={(test) => this.showTestDetails(test)}
+            tests={this.state.tests} />
+          <p className="add-test"><a href='#' onClick={(e) => this.showAddTest(e)}>Add test</a></p>
+          {this.state.addTestVisible && <AddTest
+            finishAdd={(err) => this.refreshList(err)} />}
+          {this.state.detailsVisible && <TestDetails
+            isVisible={this.state.detailsVisible}
+            hideDetails={() => this.hideDetails()}
+            test={this.state.activeTest} />}
+        </div>
 
-      <div>
-        <ErrorMessage error={this.state.error} />
-        <h1>Technologies!</h1>
-        <TechnologyList
-          showTechnologyDetails={(technology) => this.showTechnologyDetails(technology)}
-          technologies={this.state.technologies} />
-        <p><a href='#' onClick={(e) => this.showAddTechnology(e)}>Add technology</a></p>
-        {this.state.addTechnologyVisible && <AddTechnology
-          finishAdd={(err) => this.refreshList(err)} />}
-        {this.state.technologyDetailsVisible && <TechnologyDetails
-          isVisible={this.state.technologyDetailsVisible}
-          hideDetails={() => this.hideDetails()}
-          technology={this.state.activeTechnology} />}
+        <div className = "technology col-md-6">
+          <ErrorMessage error={this.state.error} />
+          <TechnologyList
+            showTechnologyDetails={(technology) => this.showTechnologyDetails(technology)}
+            technologies={this.state.technologies} />
+          <p className="add-tech"><a href='#' onClick={(e) => this.showAddTechnology(e)}>Add technology</a></p>
+          {this.state.addTechnologyVisible && <AddTechnology
+            finishAdd={(err) => this.refreshList(err)} />}
+          {this.state.technologyDetailsVisible && <TechnologyDetails
+            isVisible={this.state.technologyDetailsVisible}
+            hideDetails={() => this.hideDetails()}
+            technology={this.state.activeTechnology} />}
+        </div>
       </div>
     </div>
     )
