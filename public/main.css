@@ -27,13 +27,13 @@ body {
 
 #app {
   background-color: #FB3640;
-  height: 100vh;
+  height: 120vh;
 }
 
 
 .container {
   height: 100vh;
-  background-color: white;
+  background-color: lightGrey;
 }
 
 .header {
@@ -42,10 +42,11 @@ body {
   color: #0A2463;
   margin: 15px 0px;
   padding: 20px 0px;
+  text-decoration: none;
 }
 .header h1 {
   font-size: 90px;
-  text-shadow: 3px 3px #0056BC;
+
 }
 
 .testing {

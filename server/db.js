@@ -9,6 +9,7 @@ function getTestLib (connection) {
   return connection('testLib')
 }
 
+
 function getTechnologies (connection) {
   return connection('technologies')
 }
@@ -22,4 +23,4 @@ function appendTest (test, connection) {
 function appendTechnology (data, connection) {
   return connection('technologies')
     .insert(data)
-}
+

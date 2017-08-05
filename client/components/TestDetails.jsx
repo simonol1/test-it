@@ -12,7 +12,7 @@ export default (props) => {
       <p>Installation: <a href={test.installation}>{test.installation}</a></p>
       <p>Description: {test.description}</p>
       <div><img className = 'image' src={test.img_url} /></div>
-      <a href="#" onClick={hide}>Close</a>
+      <a href="#" id="close" onClick={hide}>Close</a>
     </div>
   )
 }

@@ -87,7 +87,7 @@ export default class App extends React.Component {
 
   render () {
     return (
-    <div className="app container">
+    <div className="app-container">
       <div className = "header">
         <h1>TEST IT!</h1>
         <h4>Test it real good.</h4>

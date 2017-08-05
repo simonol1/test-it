@@ -9,7 +9,7 @@ export default (props) => {
       <h2 className = "tech-header">Tests</h2>
       <p>Technology Name: {technology.technologies_name}</p>
       <p>Tests: {technology.tests}</p>
-      <a href="#" onClick={hide}>Close</a>
+      <a href="#" id="close" onClick={hide}>Close</a>
     </div>
   )
 }
